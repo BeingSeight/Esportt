@@ -1,7 +1,9 @@
 const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
-  output: 'export',
-  basePath: isProd ? '/Esportt' : '',
-  assetPrefix: isProd ? '/Esportt/' : '',
+  // Removed output: 'export' to enable API routes
+  // basePath: isProd ? '/Esportt' : '',
+  // assetPrefix: isProd ? '/Esportt/' : '',
+  reactStrictMode: true,
+  swcMinify: true,
 };

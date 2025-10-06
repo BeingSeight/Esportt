@@ -1,6 +1,10 @@
 import { NextResponse } from 'next/server';
 import { connectToDatabase } from '../../../lib/mongodb'; // Use the correct relative path
 
+// Add runtime configuration
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
+
 // This function handles all GET requests to /api/tutorials
 export async function GET(request) {
   try {

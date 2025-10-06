@@ -1,13 +1,20 @@
 import { MongoClient } from 'mongodb';
 
 const uri = process.env.MONGODB_URI;
-const options = {};
+const options = {
+  maxPoolSize: 10,
+  minPoolSize: 5,
+  maxIdleTimeMS: 30000,
+  maxConnecting: 2,
+  connectTimeoutMS: 5000,
+  socketTimeoutMS: 5000,
+};
 
 let client;
 let clientPromise;
 
 if (!process.env.MONGODB_URI) {
-  throw new Error('Please add your Mongo URI to .env.local');
+  throw new Error('Please add your Mongo URI to .env or .env.local');
 }
 
 if (process.env.NODE_ENV === 'development') {
@@ -28,11 +35,12 @@ if (process.env.NODE_ENV === 'development') {
 export async function connectToDatabase() {
   try {
     const client = await clientPromise;
-    const db = client.db(); // Uses the database specified in your MongoDB URI
+    const db = client.db('esport'); // Explicitly specify database name
     return { client, db };
   } catch (error) {
     console.error('Failed to connect to database:', error);
-    throw error;
+    console.error('MongoDB URI:', process.env.MONGODB_URI ? 'Set' : 'Not set');
+    throw new Error(`Database connection failed: ${error.message}`);
   }
 }
 

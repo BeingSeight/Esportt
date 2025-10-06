@@ -2,16 +2,23 @@
 import { NextResponse } from 'next/server';
 import { connectToDatabase } from '../../../lib/mongodb'; // Relative path
 
+// Add runtime configuration
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
+
 export async function POST(request) {
   try {
     // 1. Read 'name' from the request body, in addition to the other fields.
     const { firebaseId, email, name, experienceLevel } = await request.json();
+
+    console.log('Register API called with data:', { firebaseId, email, name, experienceLevel });
 
     if (!firebaseId || !email || !name || !experienceLevel) {
       return NextResponse.json({ success: false, error: 'Missing required fields' }, { status: 400 });
     }
 
     const { db } = await connectToDatabase();
+    console.log('Database connected successfully for registration');
 
     await db.collection('players').insertOne({
       firebaseId,
@@ -23,7 +30,12 @@ export async function POST(request) {
 
     return NextResponse.json({ success: true, message: 'Player profile created' }, { status: 201 });
   } catch (error) {
-    console.error('API Error:', error);
-    return NextResponse.json({ success: false, error: 'Internal Server Error' }, { status: 500 });
+    console.error('Register API Error:', error);
+    console.error('Error stack:', error.stack);
+    return NextResponse.json({ 
+      success: false, 
+      error: 'Internal Server Error',
+      details: process.env.NODE_ENV === 'development' ? error.message : undefined
+    }, { status: 500 });
   }
 }
