@@ -1,37 +1,38 @@
 // src/components/BrowserMockup.jsx
 'use client';
 
-import { motion } from "framer-motion";
 import Link from "next/link";
-import { Button } from "./ui/button"; // Using ShadCN button
+import { ShimmerButton } from "./ui/shimmer-button"; // Import the new button
+import styles from './BrowserMockup.module.css';
 
 export default function BrowserMockup() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
-        className="w-full max-w-4xl"
-      >
-        <div className="w-full bg-neutral-900/80 backdrop-blur-sm border border-white/10 rounded-t-lg flex items-center p-2 gap-2">
-          <div className="w-3 h-3 rounded-full bg-red-500" />
-          <div className="w-3 h-3 rounded-full bg-yellow-500" />
-          <div className="w-3 h-3 rounded-full bg-green-500" />
-          <div className="flex-1 text-center text-sm text-neutral-400">EsportTT</div>
+    <div className={styles.wrapper}>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <div className={`${styles.dot} ${styles.dotRed}`} />
+          <div className={`${styles.dot} ${styles.dotYellow}`} />
+          <div className={`${styles.dot} ${styles.dotGreen}`} />
+          <div className={styles.headerText}>EsportTT</div>
         </div>
-        <div className="w-full bg-neutral-950/80 backdrop-blur-sm border-x border-b border-white/10 rounded-b-lg p-8 sm:p-16 text-center">
-          <h1 className="text-4xl sm:text-6xl font-bold text-white mb-4">
+        <div className={styles.content}>
+          <h1 className={styles.title}>
             Your Arena Awaits
           </h1>
-          <p className="text-neutral-300 max-w-xl mx-auto mb-8">
+          <p className={styles.description}>
             The ultimate platform for competitive gaming. Create, compete, and conquer. Join tournaments, complete quests, and rise to the top.
           </p>
+
+          {/* Replace the old Link/Button with the new ShimmerButton */}
           <Link href="/register">
-            <Button size="lg">Get Started Now</Button>
+            <ShimmerButton className="shadow-2xl">
+              <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10">
+                Get Started Now
+              </span>
+            </ShimmerButton>
           </Link>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

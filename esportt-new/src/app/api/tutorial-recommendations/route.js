@@ -1,7 +1,7 @@
-// src/app/api/tutorials/route.js
 import { NextResponse } from 'next/server';
-import { connectToDatabase } from '../../../../lib/mongodb';
+import { connectToDatabase } from '../../../lib/mongodb'; // Use the correct relative path
 
+// This function handles all GET requests to /api/tutorials
 export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
@@ -11,10 +11,11 @@ export async function GET(request) {
 
     const query = {};
     if (level) {
-      query.experienceLevel = level; // If a level is provided, add it to the query
+      // If a level is provided, add it to the MongoDB query
+      query.experienceLevel = level; 
     }
 
-    const tutorials = await db.collection('tutorials').find(query).toArray();
+const tutorials = await db.collection('tutorials').find(query).toArray();
 
     return NextResponse.json({ success: true, data: tutorials }, { status: 200 });
   } catch (error) {

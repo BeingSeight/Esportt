@@ -1,19 +1,22 @@
 // src/app/api/register/route.js
 import { NextResponse } from 'next/server';
-import { connectToDatabase } from '@/lib/mongodb';
+import { connectToDatabase } from '../../../lib/mongodb'; // Relative path
 
 export async function POST(request) {
   try {
-    const { firebaseId, email, experienceLevel } = await request.json();
+    // 1. Read 'name' from the request body, in addition to the other fields.
+    const { firebaseId, email, name, experienceLevel } = await request.json();
 
-    if (!firebaseId || !email || !experienceLevel) {
+    if (!firebaseId || !email || !name || !experienceLevel) {
       return NextResponse.json({ success: false, error: 'Missing required fields' }, { status: 400 });
     }
 
     const { db } = await connectToDatabase();
+
     await db.collection('players').insertOne({
       firebaseId,
       email,
+      name, // 2. Add the 'name' field to the document being saved.
       experienceLevel,
       createdAt: new Date(),
     });

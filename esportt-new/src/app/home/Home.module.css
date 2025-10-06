@@ -1,0 +1,39 @@
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marqueeContainer {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(to right,
+      transparent,
+      black 20%,
+      black 80%,
+      transparent);
+  mask-image: linear-gradient(to right,
+      transparent,
+      black 20%,
+      black 80%,
+      transparent);
+}
+
+.marqueeContent {
+  display: flex;
+  width: fit-content; /* Let the content define the width */
+  animation: scroll 40s linear infinite;
+}
+
+.marqueeContent:hover {
+  animation-play-state: paused;
+}
+
+.cardWrapper {
+  width: 350px; /* Set a fixed width for each card */
+  flex-shrink: 0;
+  padding: 0 0.75rem; /* Gap between cards */
+}
