@@ -1,0 +1,114 @@
+.footer {
+  background-color: #0f172a; /* slate-900 */
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border-radius: 0.75rem; /* rounded-xl */
+  width: 100%;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.contentContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 30px;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 80px;
+}
+
+/* This is the new style for your text logo */
+.textLogo {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 800; /* extrabold */
+  color: #818cf8; /* A nice indigo color */
+  margin-bottom: 0.5rem;
+}
+
+.tagline {
+  font-size: 0.9rem;
+  color: #94a3b8; /* slate-400 */
+  text-align: center;
+}
+
+.contactButton {
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  background-color: #3B9DF8;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.contactButton:hover {
+  opacity: 0.9;
+}
+
+.socialLinksContainer {
+  display: flex;
+  gap: 15px;
+  margin-top: 1rem;
+}
+
+.socialIcon {
+  font-size: 1.2rem;
+  background-color: #1e293b; /* slate-800 */
+  color: #94a3b8; /* slate-400 */
+  padding: 0.6rem;
+  cursor: pointer;
+  border-radius: 9999px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.socialIcon:hover {
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+.bottomBar {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0;
+  right: 0;
+  padding: 0 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 30;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  color: #64748b; /* slate-500 */
+}
+
+.arrowUp {
+  padding: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid #64748b;
+  cursor: pointer;
+  font-size: 2rem;
+  color: #64748b;
+  transition: all 0.2s;
+}
+.arrowUp:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.bgImage {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  border-bottom-left-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+  width: 100%;
+}
