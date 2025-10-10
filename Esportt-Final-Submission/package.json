@@ -1,0 +1,14 @@
+{
+  "name": "esportt-final-submission",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install-frontend": "cd frontend && pnpm install --frozen-lockfile",
+    "build-frontend": "cd frontend && pnpm build",
+    "dev-frontend": "cd frontend && pnpm dev",
+    "build": "pnpm run build-frontend"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
