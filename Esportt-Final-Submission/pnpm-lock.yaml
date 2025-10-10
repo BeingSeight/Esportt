@@ -1,0 +1,29 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@datastructures-js/priority-queue':
+        specifier: ^6.3.4
+        version: 6.3.4
+
+packages:
+
+  '@datastructures-js/heap@4.3.5':
+    resolution: {integrity: sha512-zgO8KO26WnZdCxe72Ck+55mhUYmw/1CL/TueKSIIU6aqoOcXAqeaL2kRldJcXtCdJ43rqgIKYdEkiL07sQ+2VQ==}
+
+  '@datastructures-js/priority-queue@6.3.4':
+    resolution: {integrity: sha512-m8Jt1OkwyHsKRz6L1FWerz3Hw8iU5vqCdBI6khC8YNssF1kXKX6cs8Xc9Zt9ocPCxO/vZhAu/KnQ+uQ4Btw6AA==}
+
+snapshots:
+
+  '@datastructures-js/heap@4.3.5': {}
+
+  '@datastructures-js/priority-queue@6.3.4':
+    dependencies:
+      '@datastructures-js/heap': 4.3.5
